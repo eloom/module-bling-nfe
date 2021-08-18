@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+	<router id="admin">
+		<route id="Eloom_BlingNfe" frontName="eloomblingnfe">
+			<module name="Eloom_BlingNfe"/>
+		</route>
+	</router>
+</config>

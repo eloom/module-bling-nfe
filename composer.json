@@ -1,0 +1,39 @@
+{
+  "name": "eloom/module-bling-nfe",
+  "description": "Bling NFe para Magento 2",
+  "homepage": "https://eloom.tech/bling",
+  "keywords": [
+    "magento",
+    "magento2",
+    "shipping",
+    "bling",
+    "bling nfe",
+    "ecommerce"
+  ],
+  "authors": [
+    {
+      "name": "eloom.com.br",
+      "email": "suporte@eloom.com.br"
+    }
+  ],
+  "support": {
+    "email": "suporte@eloom.com.br"
+  },
+  "require": {
+    "php": "~7.3|~7.4",
+    "magento/framework": "103.0.*",
+    "eloom/module-bling": "dev-main"
+  },
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "autoload": {
+    "files": [
+      "src/module-bling-nfe/registration.php"
+    ],
+    "psr-4": {
+      "Eloom\\BlingNfe\\": "src/module-bling-nfe"
+    }
+  }
+}

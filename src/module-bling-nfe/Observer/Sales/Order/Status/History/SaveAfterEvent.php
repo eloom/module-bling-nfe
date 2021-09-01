@@ -15,8 +15,8 @@ declare(strict_types=1);
 
 namespace Eloom\BlingNfe\Observer\Sales\Order\Status\History;
 
-use Eloom\BlingNfe\Connection\Http\Store;
-use Eloom\BlingNfe\Helper\Data as Helper;
+use Eloom\Bling\Lib\Http\Store;
+use Eloom\Bling\Helper\Data as BlingHelper;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -48,7 +48,7 @@ class SaveAfterEvent implements ObserverInterface {
 	private $shipmentNotifier;
 	
 	/**
-	 * @var Helper
+	 * @var BlingHelper
 	 */
 	private $helper;
 	
@@ -57,32 +57,11 @@ class SaveAfterEvent implements ObserverInterface {
 		$this->trackFactory = ObjectManager::getInstance()->get(TrackFactory::class);
 		$this->shipmentDocumentFactory = ObjectManager::getInstance()->get(ShipmentDocumentFactory::class);
 		$this->shipmentNotifier = ObjectManager::getInstance()->get(ShipmentNotifier::class);
-		$this->helper = ObjectManager::getInstance()->get(Helper::class);
+		$this->helper = ObjectManager::getInstance()->get(BlingHelper::class);
 	}
 	
 	public function execute(Observer $observer) {
-		$url = $this->helper->getRestUrl();
-		$headers = ['Authorization' => 'Bearer awexs2i36g77lkdmlchxd6qa090yfi38'];
-		$data = [
-			'statusHistory' => [
-				'comment' => 'NF: 306 | Serie: 55 | Date: 16-08-2021 | Key: 35210804769278000189550550000003061484767549',
-				'is_customer_notified' => 1,
-				'is_visible_on_front' => 1
-			]
-		];
 		
-		$store = ObjectManager::getInstance()->get(Store::class);
-		$promise = $store->postAsync($url . 'orders/73/comments', $data, $headers);
-		
-		$promise->then(
-			function (ResponseInterface $res) {
-				$this->logger->info($res->getStatusCode());
-			},
-			function (RequestException $e) {
-				$this->logger->critical(sprintf("%s - Exception: %s", __METHOD__, $e->getMessage()));
-				$this->logger->critical(sprintf("%s - Exception: %s", __METHOD__, $e->getRequest()->getMethod()));
-			}
-		);
 		
 		return;
 		$history = $observer->getEvent()->getStatusHistory();

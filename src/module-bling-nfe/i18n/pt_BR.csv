@@ -1,21 +1,71 @@
 # -- A
+"A/R Invoice","NF-e de Saída"
+"A/P Invoice","NF-e de Entrada"
+"Are you sure you want to generate NF-e?","Você confirma que deseja gerar a NF-e?"
+"Automatically generated invoice when syncing with Bling.","Fatura gerada automaticamenteao sincronizar com Bling."
 
 # -- B
 
 # -- C
+"Carrier","Transportadora"
+"Comment","Comentário"
 
 # -- D
 
 # -- E
+"Error on create Bling NF-e.","Erro ao criar a NF-e no Bling."
+
+# -- F
+"Final status","Status final"
+
+# -- G
+"Ship locator %s","Código localizador %s"
 
 # -- I
+"Initial status","Status inicial"
+"Invoice comment","Comentário da NF-e"
 
 # -- L
 
+# -- M
+"Mapping","Mapeamento"
+
+# -- N
+"Nature of operation","Natureza da operação"
+"NF-e number","Número da NF-e"
+"NF-e Serie","Série da NF-e"
+"NF-e series cannot be null.","Série da NF-e não pode ser nula."
+"NF-e A/R Generate","Gerar NF-e"
+"NF-e %s generated.","Nota Fiscal Eletrônica %s gerada com sucesso."
+"NF-e Number: %s | NF-e Access Key: %s","Número da nota fiscal: %s | Chave de acesso da nota fiscal: %s"
+
+# -- O
+"Order %s - Status not allowed to generate NF-e AR.","Pedido %s - Status não liberado para gerar NF-e de Saída."
+"Order shipping method","Método de frete do pedido"
+"Order %s - Shipping method not found in mapping.","Pedido %s - Método de frete não encontrado no mapeamento."
+"Order %s - Payment method not found in mapping.","Pedido %s - Método de pagamento do pedido não é compatível."
+"Order %s - Error %s - %s","Pedido %s - Erro %s - %s"
+"Order %s - Successfully generated NF-e %s.","Pedido %s - Gerou Nota Fiscal %s"
+"Order status mapping to Bling","Mapeamento de status de pedido"
+"Order Status to Ship","Status do pedido para preencher o Envio"
+
 # -- P
+"Please enable NF-e / AR generation.","Por favor, habilite a geração de NF-e de Saída."
+"Product %s - NF-e NCM cannot be null.","Produto %s - NCM da NF-e não pode ser nulo."
+"Product %s - NF-e unit of measurement cannot be null.","Produto %s - Unidade de medida da NF-e não pode ser nulo."
+"Product %s - NF-e item type cannot be null.","Produto %s - Tipo do item da NF-e não pode ser nulo."
+"Product %s - NF-e source cannot be null.","Produto %s - Origem da NF-e não pode ser nulo."
 
 # -- S
+"Service","Serviço"
+"Shipping method","Método de frete"
+"Ship mapping to Bling","Mapeamento de Frete - Loja > Bling"
+"Ship mapping from Bling","Mapeamento de Frete - Bling > Loja"
+"Ship comment","Comentário do envio"
 
 # -- T
+"Track number","Número do localizador"
+"Tracking shipping method","Método de Frete do Rastreamento"
+"Tracker field","Campo do rastreador"
 
 # -- Y

@@ -1,0 +1,16 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="sales_order_tabs">
+			<block class="Eloom\BlingNfe\Block\Adminhtml\Order\View\Tab\Nfe"
+			       name="eloom_blingnfe_nfe.grid.container"/>
+			<action method="addTab">
+				<argument name="name" xsi:type="string">eloom_blingnfe_nfe</argument>
+				<argument name="block" xsi:type="string">eloom_blingnfe_nfe.grid.container</argument>
+			</action>
+		</referenceBlock>
+		<referenceBlock name="eloom_blingnfe_nfe.grid.container">
+			<uiComponent name="eloom_blingnfe_nfe_grid"/>
+		</referenceBlock>
+	</body>
+</page>

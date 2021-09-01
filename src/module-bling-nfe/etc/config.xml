@@ -2,8 +2,13 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
 	<default>
 		<eloom_bling>
+			<nfe_ar>
+				<active>0</active>
+				<serie>001</serie>
+				<comment>NF-e Number: %s | NF-e Access Key: %s</comment>
+			</nfe_ar>
 			<nfe>
-				<active>1</active>
+				<status_to_ship>nfe_generated</status_to_ship>
 			</nfe>
 		</eloom_bling>
 	</default>

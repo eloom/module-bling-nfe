@@ -85,7 +85,7 @@ class MassGenerate extends Action {
 		}
 		
 		$orderCollection = $this->collectionFactory->create();
-		$orderCollection->addFieldToFilter('order_id', ['in' => $orderIds]);
+		$orderCollection->addFieldToFilter('entity_id', ['in' => $orderIds]);
 		
 		foreach ($orderCollection as $order) {
 			try {

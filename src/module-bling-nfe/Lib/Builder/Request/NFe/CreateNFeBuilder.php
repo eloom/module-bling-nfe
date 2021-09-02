@@ -75,10 +75,7 @@ class CreateNFeBuilder {
 		/**
 		 * Items
 		 */
-		foreach ($order->getAllItems() as $orderItem) {
-			if ('configurable' == $orderItem->getProductType()) {
-				continue;
-			}
+		foreach ($order->getAllVisibleItems() as $orderItem) {
 			$product = $this->productRepository->getById($orderItem->getProductId());
 			
 			if (!$product->hasData('nfe_ncm')) {
@@ -108,7 +105,7 @@ class CreateNFeBuilder {
 				->setCode($orderItem->getSku())
 				->setDescription($this->escaper->escapeHtml(htmlentities($description)))
 				->setQty($orderItem->getQtyOrdered())
-				->setPrice($orderItem->getBasePrice())
+				->setPrice($orderItem->getBasePriceInclTax())
 				->setNcm($product->getNfeNcm())
 				->setUm($um)
 				->setType($itemType)

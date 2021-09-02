@@ -5,13 +5,13 @@
 		<job name="eloom_blingnfe_syncronize_nfe"
 		     instance="Eloom\BlingNfe\Cron\SyncronizeNfe"
 		     method="execute">
-			<schedule>* * * * *</schedule>
+			<schedule>5 */3 * * *</schedule>
 		</job>
 		
 		<job name="eloom_blingnfe_syncronize_ship"
 		     instance="Eloom\BlingNfe\Cron\SyncronizeShip"
 		     method="execute">
-			<schedule>* * * * *</schedule>
+			<schedule>10 */3 * * *</schedule>
 		</job>
 	</group>
 </config>

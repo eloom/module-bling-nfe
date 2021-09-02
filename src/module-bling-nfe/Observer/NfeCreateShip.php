@@ -61,6 +61,7 @@ class NfeCreateShip implements ObserverInterface {
 				'notify' => true,
 				'items' => $event->getItems()
 			];
+			$this->logger->info(sprintf("Invoice creating for order %s.", $orderId));
 			
 			$storeApi->orders()->invoice($orderId, $data);
 		}
@@ -81,6 +82,7 @@ class NfeCreateShip implements ObserverInterface {
 				]
 			]
 		];
+		$this->logger->info(sprintf("Ship creating for order %s.", $orderId));
 		
 		$storeApi->orders()->ship($orderId, $data);
 	}

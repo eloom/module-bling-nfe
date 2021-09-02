@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Eloom\BlingNfe\Lib\Domain\Response;
 
+use Eloom\Bling\Lib\Domain\Response\Error;
+
 class Order {
 	
 	private $nfes = [];

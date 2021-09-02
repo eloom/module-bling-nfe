@@ -21,6 +21,7 @@ use Eloom\BlingNfe\Lib\Builder\Response\NFe\CreateNFeBuilder as CreateNFeRespond
 use Eloom\BlingNfe\Service\NfeService;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\Message\ManagerInterface;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
 use Psr\Log\LoggerInterface;
 

@@ -20,7 +20,6 @@ use Eloom\BlingNfe\Api\NfeRepositoryInterface;
 use Eloom\BlingNfe\Helper\Data as Helper;
 use Eloom\BlingNfe\Lib\BlingApi;
 use Eloom\BlingNfe\Lib\Builder\Response\NFe\GetNFeBuilder as GetNFeRespondeBuilder;
-use Eloom\BlingNfe\Lib\StoreApi;
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\Search\FilterGroup;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -30,7 +29,7 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\OrderRepository;
 use Psr\Log\LoggerInterface;
 
-class SyncronizeNfe {
+class NfeSyncronize {
 	
 	private $nfeRepository;
 	
@@ -103,20 +102,14 @@ class SyncronizeNfe {
 						
 						$comment = $this->helper->getCommentAR($storeId);
 						$comment = sprintf(__($comment), $model->getBlingNumber(), $nfe->getAccessKey());
-						$data = [
-							'statusHistory' => [
-								'comment' => $comment,
-								'is_customer_notified' => 1,
-								'is_visible_on_front' => 1,
-								'status' => $order->getStatus()
-							]
-						];
 						
-						$storeApi = new StoreApi($storeId);
-						$storeApi->orders()->comments($model->getOrderId(), $data);
+						$order->addStatusToHistory($order->getStatus(), $comment)
+							->setIsCustomerNotified(true)
+							->save();
 					}
 				} catch (\Exception $e) {
 					$this->logger->critical(sprintf("%s - Exception: %s", __METHOD__, $e->getMessage()));
+					$this->logger->critical(sprintf("%s - Exception: %s", __METHOD__, $e->getTraceAsString()));
 				}
 			}
 		}

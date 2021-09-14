@@ -125,7 +125,7 @@ class SyncronizeShip {
 							}
 							
 							$this->eventManager->dispatch(
-								'eloom_blingnfe_admin_sales_order_nfe_created_ship',
+								'eloom_blingnfe_admin_sales_order_nfe_shipment_create',
 								[
 									'store_id' => $storeId,
 									'order_id' => $orderId,

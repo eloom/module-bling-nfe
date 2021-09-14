@@ -36,7 +36,7 @@
 "NF-e Serie","Série da NF-e"
 "NF-e series cannot be null.","Série da NF-e não pode ser nula."
 "NF-e A/R Generate","Gerar NF-e"
-"NF-e %s generated.","Nota Fiscal Eletrônica %s gerada com sucesso."
+"New NF-e %s for Order #%s.","Nota Fiscal Eletrônica %s para o Pedido #%s."
 "NF-e Number: %s | NF-e Access Key: %s","Número da nota fiscal: %s | Chave de acesso da nota fiscal: %s"
 
 # -- O

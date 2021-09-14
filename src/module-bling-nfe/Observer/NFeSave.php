@@ -76,9 +76,7 @@ class NFeSave implements ObserverInterface {
 			}
 			$this->nfeRepository->save($nfeModel);
 			
-			$this->eventManager->dispatch(
-				'eloom_blingnfe_admin_sales_order_nfe_created_comment',
-				[
+			$this->eventManager->dispatch('eloom_blingnfe_admin_sales_order_nfe_comment_create', [
 					'store_id' => $storeId,
 					'order_id' => $orderId,
 					'order_status' => $dto->getFinal(),

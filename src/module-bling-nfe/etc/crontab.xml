@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
 	<group id="default">
 		<job name="eloom_blingnfe_syncronize_nfe"
-		     instance="Eloom\BlingNfe\Cron\SyncronizeNfe"
+		     instance="Eloom\BlingNfe\Cron\NfeSyncronize"
 		     method="execute">
 			<schedule>5 */3 * * *</schedule>
 		</job>

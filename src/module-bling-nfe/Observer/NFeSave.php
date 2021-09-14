@@ -19,9 +19,9 @@ use Eloom\BlingNfe\Api\Data\NfeInterface;
 use Eloom\BlingNfe\Api\NfeRepositoryInterface;
 use Eloom\BlingNfe\Helper\Data as Helper;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Sales\Api\OrderRepositoryInterface;
 
 class NFeSave implements ObserverInterface {
 	
@@ -36,18 +36,16 @@ class NFeSave implements ObserverInterface {
 	private $helper;
 	
 	/**
-	 * Core event manager proxy
-	 *
-	 * @var ManagerInterface
+	 * @var OrderRepositoryInterface
 	 */
-	protected $eventManager = null;
+	protected $orderRepository;
 	
-	public function __construct(NfeRepositoryInterface $nfeRepository,
-	                            Helper                 $helper,
-	                            ManagerInterface       $eventManager) {
+	public function __construct(NfeRepositoryInterface   $nfeRepository,
+	                            Helper                   $helper,
+	                            OrderRepositoryInterface $orderRepository) {
 		$this->nfeRepository = $nfeRepository;
 		$this->helper = $helper;
-		$this->eventManager = $eventManager;
+		$this->orderRepository = $orderRepository;
 	}
 	
 	/**
@@ -76,15 +74,10 @@ class NFeSave implements ObserverInterface {
 			}
 			$this->nfeRepository->save($nfeModel);
 			
-			$this->eventManager->dispatch('eloom_blingnfe_admin_sales_order_nfe_comment_create', [
-					'store_id' => $storeId,
-					'order_id' => $orderId,
-					'order_status' => $dto->getFinal(),
-					'nfe' => $nfe->getNumber()
-				]
-			);
+			$order = $this->orderRepository->get($orderId);
+			$order->addStatusToHistory($dto->getFinal(), sprintf(__('New NF-e %s for Order #%s.'), $nfe->getNumber(), $orderId))
+				->setIsCustomerNotified(true)
+				->save();
 		}
-		
-		// disparar evento de tracking
 	}
 }

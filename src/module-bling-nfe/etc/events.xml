@@ -13,11 +13,6 @@
 		          instance="Eloom\BlingNfe\Observer\NFeSave"/>
 	</event>
 	
-	<event name="eloom_blingnfe_admin_sales_order_nfe_comment_create">
-		<observer name="eloom_blingnfe_admin_sales_order_nfe_comment_create"
-		          instance="Eloom\BlingNfe\Observer\OrderHistoryCreate"/>
-	</event>
-	
 	<event name="eloom_blingnfe_admin_sales_order_nfe_shipment_create">
 		<observer name="eloom_blingnfe_admin_sales_order_nfe_shipment_create"
 		          instance="Eloom\BlingNfe\Observer\ShipmentCreate"/>

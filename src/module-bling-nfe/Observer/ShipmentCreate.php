@@ -22,6 +22,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Sales\Api\Data\ShipmentTrackInterfaceFactory;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Api\ShipmentRepositoryInterface;
+use Magento\Sales\Model\Order;
 use Psr\Log\LoggerInterface;
 
 class ShipmentCreate implements ObserverInterface {
@@ -96,6 +97,8 @@ class ShipmentCreate implements ObserverInterface {
 				
 				$order->addStatusHistoryComment(__("New Shipment for Order #%1.", $orderId))
 					->setIsCustomerNotified(true)
+					->setStatus(Order::STATE_COMPLETE)
+					->setState(Order::STATE_COMPLETE)
 					->save();
 			}
 		} catch (NoSuchEntityException $e) {

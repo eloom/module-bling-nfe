@@ -13,7 +13,7 @@
 		<column name="bling_id" nullable="true" xsi:type="int" comment="bling_id" identity="false"/>
 		<column name="access_key" nullable="true" xsi:type="varchar" comment="access_key" length="255" default="WAITING"/>
 		<column name="status" nullable="true" xsi:type="varchar" comment="status" length="255"/>
-		<column name="created_at" nullable="true" xsi:type="datetime" comment="created_at" default="now()"/>
+		<column name="created_at" nullable="true" xsi:type="datetime" comment="created_at" />
 		<column name="danfe_url" nullable="true" xsi:type="text" comment="danfe_url"/>
 	</table>
 </schema>

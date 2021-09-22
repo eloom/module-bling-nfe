@@ -16,7 +16,6 @@ declare(strict_types=1);
 namespace Eloom\BlingNfe\Observer;
 
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\DB\Transaction;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -38,8 +37,6 @@ class InvoiceCreate implements ObserverInterface {
 	
 	protected $invoiceService;
 	
-	protected $transaction;
-	
 	protected $invoiceSender;
 	
 	public function __construct(LoggerInterface          $logger,
@@ -47,10 +44,10 @@ class InvoiceCreate implements ObserverInterface {
 	                            InvoiceService           $invoiceService,
 	                            InvoiceSender            $invoiceSender,
 	                            Transaction              $transaction) {
+		
 		$this->logger = $logger;
 		$this->orderRepository = $orderRepository;
 		$this->invoiceService = $invoiceService;
-		$this->transaction = $transaction;
 		$this->invoiceSender = $invoiceSender;
 	}
 	
@@ -74,9 +71,6 @@ class InvoiceCreate implements ObserverInterface {
 		$invoice->getOrder()->setCustomerNoteNotify(false);
 		$invoice->getOrder()->setIsInProcess(true);
 		$invoice->pay()->save();
-		
-		$transactionSave = $this->transaction->addObject($invoice)->addObject($invoice->getOrder());
-		$transactionSave->save();
 		
 		try {
 			$this->invoiceSender->send($invoice);

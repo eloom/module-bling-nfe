@@ -13,28 +13,21 @@
 		</deps>
 	</settings>
 	
-	<dataSource name="eloom_blingnfe_nfe_grid_data_source">
+	<dataSource name="eloom_blingnfe_nfe_grid_data_source"
+	            component="Magento_Ui/js/grid/provider">
 		<settings>
 			<filterUrlParams>
 				<param name="order_id">*</param>
 			</filterUrlParams>
+			<updateUrl path="mui/index/render"/>
 		</settings>
-		<argument name="dataProvider" xsi:type="configurableObject">
-			<argument name="class" xsi:type="string">OrderNfeGridDataProvider</argument>
-			<argument name="name" xsi:type="string">eloom_blingnfe_nfe_grid_data_source</argument>
-			<argument name="primaryFieldName" xsi:type="string">nfe_id</argument>
-			<argument name="requestFieldName" xsi:type="string">id</argument>
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="update_url" xsi:type="url" path="mui/index/render"/>
-				</item>
-			</argument>
-		</argument>
-		<argument name="data" xsi:type="array">
-			<item name="js_config" xsi:type="array">
-				<item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
-			</item>
-		</argument>
+		<dataProvider class="OrderNfeGridDataProvider"
+		              name="eloom_blingnfe_nfe_grid_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>nfe_id</primaryFieldName>
+			</settings>
+		</dataProvider>
 	</dataSource>
 	
 	<columns name="eloom_blingnfe_nfe_columns">

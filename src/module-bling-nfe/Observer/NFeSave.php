@@ -62,8 +62,10 @@ class NFeSave implements ObserverInterface {
 		 * Persist
 		 */
 		foreach ($nfeResponse->getNfes() as $nfe) {
+			$createdAt = new \DateTime('NOW');
 			$nfeModel = ObjectManager::getInstance()->get(NfeInterface::class);
 			$nfeModel->setOrderId($orderId);
+			$nfeModel->setCreatedAt($createdAt->format('Y-m-d H:i:s'));
 			$nfeModel->setBlingId($nfe->getId());
 			$nfeModel->setBlingNumber($nfe->getNumber());
 			$nfeModel->setTrackingNumber('WAITING');

@@ -84,6 +84,7 @@ class SyncronizeShip {
 					
 					$storeId = $order->getStoreId();
 					$statusToShip = $this->helper->getOrderStatusToShip($storeId);
+					
 					if ($statusToShip != $order->getStatus()) {
 						continue;
 					}

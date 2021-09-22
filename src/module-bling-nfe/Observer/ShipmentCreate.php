@@ -19,10 +19,9 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Sales\Api\Data\ShipmentTrackInterfaceFactory;
 use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\Sales\Api\ShipmentRepositoryInterface;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\ShipmentFactory;
 use Psr\Log\LoggerInterface;
 
 class ShipmentCreate implements ObserverInterface {
@@ -40,30 +39,26 @@ class ShipmentCreate implements ObserverInterface {
 	protected $eventManager = null;
 	
 	/**
-	 * @var ShipmentRepositoryInterface
-	 */
-	private $shipmentRepository;
-	
-	/**
-	 * @var ShipmentTrackInterfaceFactory
-	 */
-	private $trackFactory;
-	
-	/**
 	 * @var OrderRepositoryInterface
 	 */
 	protected $orderRepository;
 	
-	public function __construct(LoggerInterface               $logger,
-	                            ManagerInterface              $eventManager,
-	                            ShipmentRepositoryInterface   $shipmentRepository,
-	                            ShipmentTrackInterfaceFactory $trackFactory,
-	                            OrderRepositoryInterface      $orderRepository) {
+	/**
+	 * The ShipmentFactory is used to create a new Shipment.
+	 *
+	 * @var ShipmentFactory
+	 */
+	protected $shipmentFactory;
+	
+	public function __construct(LoggerInterface          $logger,
+	                            ManagerInterface         $eventManager,
+	                            OrderRepositoryInterface $orderRepository,
+	                            ShipmentFactory          $shipmentFactory) {
+		
 		$this->logger = $logger;
 		$this->eventManager = $eventManager;
-		$this->shipmentRepository = $shipmentRepository;
-		$this->trackFactory = $trackFactory;
 		$this->orderRepository = $orderRepository;
+		$this->shipmentFactory = $shipmentFactory;
 	}
 	
 	public function execute(Observer $observer) {
@@ -83,25 +78,28 @@ class ShipmentCreate implements ObserverInterface {
 		try {
 			$order = $this->orderRepository->get($orderId);
 			if ($order->canShip()) {
-				$this->logger->info(sprintf("New Shipment for order %s.", $orderId));
+				$track = array(array(
+					'carrier_code' => $event->getCarrierCode(),
+					'title' => $event->getCarrierCode(),
+					'number' => $event->getTrackNumber(),
+				));
 				
-				$shipment = $this->shipmentFactory->create($order);
+				$items = [];
+				foreach ($order->getAllItems() as $item) {
+					$items[$item->getItemId()] = $item->getQtyOrdered();
+				}
 				
-				$track = $this->trackFactory->create()
-					->setNumber($event->getTrackNumber())
-					->setCarrierCode($event->getCarrierCode())
-					->setTitle($event->getCarrierTitle());
+				$shipment = $this->shipmentFactory->create($order, $items, $track);
 				
-				$shipment->addTrack($track);
-				$this->shipmentRepository->save($shipment);
-				
-				$order->addStatusHistoryComment(__("New Shipment for Order #%1.", $orderId))
-					->setIsCustomerNotified(true)
-					->setStatus(Order::STATE_COMPLETE)
-					->setState(Order::STATE_COMPLETE)
-					->save();
+				if ($shipment->getTotalQty()) {
+					$shipment->register()->save();
+					
+					$order->addStatusToHistory(Order::STATE_COMPLETE, __("New Shipment for Order #%1.", $orderId))
+						->setIsCustomerNotified(true)
+						->save();
+				}
 			}
-		} catch (NoSuchEntityException $e) {
+		} catch (\Exception $e) {
 			$this->logger->critical(sprintf("%s - Exception: %s", __METHOD__, $e->getMessage()));
 			$this->logger->critical(sprintf("%s - Exception: %s", __METHOD__, $e->getTraceAsString()));
 		}

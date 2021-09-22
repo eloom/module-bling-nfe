@@ -106,7 +106,7 @@ class Index extends \Magento\Sales\Controller\Adminhtml\Order {
 				if (!$this->helper->isActiveAR($order->getStoreId())) {
 					throw new \Exception("Please enable NF-e / AR generation.");
 				}
-				$this->logger->info('NF-e for Order Id ' . $order->getId());
+				$this->logger->info('Generating NF-e for the Order Id ' . $order->getId());
 				
 				$orderNfeRequest = $this->createNfeRequestBuilder->build($order);
 				$json = $this->nfeService->toXml($orderNfeRequest)->create();

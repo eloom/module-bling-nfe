@@ -17,7 +17,10 @@ namespace Eloom\BlingNfe\Model;
 
 use Eloom\BlingNfe\Api\Data\NfeInterface;
 use Eloom\BlingNfe\Api\Data\NfeInterfaceFactory;
+use Eloom\BlingNfe\Model\ResourceModel\Nfe\Collection;
 use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Registry;
 
 class Nfe extends \Magento\Framework\Model\AbstractModel {
 	
@@ -28,25 +31,24 @@ class Nfe extends \Magento\Framework\Model\AbstractModel {
 	protected $_eventPrefix = 'eloom_blingnfe_nfe';
 	
 	/**
-	 * @param \Magento\Framework\Model\Context $context
-	 * @param \Magento\Framework\Registry $registry
+	 * @param Context $context
+	 * @param Registry $registry
 	 * @param NfeInterfaceFactory $nfeDataFactory
 	 * @param DataObjectHelper $dataObjectHelper
 	 * @param \Eloom\BlingNfe\Model\ResourceModel\Nfe $resource
-	 * @param \Eloom\BlingNfe\Model\ResourceModel\Nfe\Collection $resourceCollection
+	 * @param Collection $resourceCollection
 	 * @param array $data
 	 */
-	public function __construct(
-		\Magento\Framework\Model\Context                   $context,
-		\Magento\Framework\Registry                        $registry,
-		NfeInterfaceFactory                                $nfeDataFactory,
-		DataObjectHelper                                   $dataObjectHelper,
-		\Eloom\BlingNfe\Model\ResourceModel\Nfe            $resource,
-		\Eloom\BlingNfe\Model\ResourceModel\Nfe\Collection $resourceCollection,
-		array                                              $data = []
-	) {
+	public function __construct(Context                                 $context,
+	                            Registry                                $registry,
+	                            NfeInterfaceFactory                     $nfeDataFactory,
+	                            DataObjectHelper                        $dataObjectHelper,
+	                            \Eloom\BlingNfe\Model\ResourceModel\Nfe $resource,
+	                            Collection                              $resourceCollection,
+	                            array                                   $data = []) {
 		$this->nfeDataFactory = $nfeDataFactory;
 		$this->dataObjectHelper = $dataObjectHelper;
+		
 		parent::__construct($context, $registry, $resource, $resourceCollection, $data);
 	}
 	

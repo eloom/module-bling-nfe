@@ -9,6 +9,7 @@
 				<argument name="block" xsi:type="string">eloom_blingnfe_nfe.grid.container</argument>
 			</action>
 		</referenceBlock>
+		
 		<referenceBlock name="eloom_blingnfe_nfe.grid.container">
 			<uiComponent name="eloom_blingnfe_nfe_grid"/>
 		</referenceBlock>

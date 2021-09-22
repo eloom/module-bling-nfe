@@ -68,19 +68,18 @@ class NfeRepository implements NfeRepositoryInterface {
 	 * @param JoinProcessorInterface $extensionAttributesJoinProcessor
 	 * @param ExtensibleDataObjectConverter $extensibleDataObjectConverter
 	 */
-	public function __construct(
-		ResourceNfe                      $resource,
-		NfeFactory                       $nfeFactory,
-		NfeInterfaceFactory              $dataNfeFactory,
-		NfeCollectionFactory             $nfeCollectionFactory,
-		NfeSearchResultsInterfaceFactory $searchResultsFactory,
-		DataObjectHelper                 $dataObjectHelper,
-		DataObjectProcessor              $dataObjectProcessor,
-		StoreManagerInterface            $storeManager,
-		CollectionProcessorInterface     $collectionProcessor,
-		JoinProcessorInterface           $extensionAttributesJoinProcessor,
-		ExtensibleDataObjectConverter    $extensibleDataObjectConverter
-	) {
+	public function __construct(ResourceNfe                      $resource,
+	                            NfeFactory                       $nfeFactory,
+	                            NfeInterfaceFactory              $dataNfeFactory,
+	                            NfeCollectionFactory             $nfeCollectionFactory,
+	                            NfeSearchResultsInterfaceFactory $searchResultsFactory,
+	                            DataObjectHelper                 $dataObjectHelper,
+	                            DataObjectProcessor              $dataObjectProcessor,
+	                            StoreManagerInterface            $storeManager,
+	                            CollectionProcessorInterface     $collectionProcessor,
+	                            JoinProcessorInterface           $extensionAttributesJoinProcessor,
+	                            ExtensibleDataObjectConverter    $extensibleDataObjectConverter) {
+		
 		$this->resource = $resource;
 		$this->nfeFactory = $nfeFactory;
 		$this->nfeCollectionFactory = $nfeCollectionFactory;

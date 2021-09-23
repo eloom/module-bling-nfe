@@ -37,7 +37,7 @@
 			
 			<group id="nfe" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
 			       showInStore="1">
-				<label>NF-e</label>
+				<label>Shipping and Tracking</label>
 				
 				<field id="ship_to_bling" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label>Ship mapping to Bling</label>

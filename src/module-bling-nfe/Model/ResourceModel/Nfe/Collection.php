@@ -15,7 +15,9 @@ declare(strict_types=1);
 
 namespace Eloom\BlingNfe\Model\ResourceModel\Nfe;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection {
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
+class Collection extends AbstractCollection {
 	
 	/**
 	 * @var string
@@ -28,9 +30,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
 	 * @return void
 	 */
 	protected function _construct() {
-		$this->_init(
-			\Eloom\BlingNfe\Model\Nfe::class,
-			\Eloom\BlingNfe\Model\ResourceModel\Nfe::class
-		);
+		$this->_init(\Eloom\BlingNfe\Model\Nfe::class, \Eloom\BlingNfe\Model\ResourceModel\Nfe::class);
 	}
 }

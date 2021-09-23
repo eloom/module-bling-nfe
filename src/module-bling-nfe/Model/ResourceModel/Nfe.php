@@ -26,4 +26,3 @@ class Nfe extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb {
 		$this->_init('eloom_blingnfe_nfe', 'nfe_id');
 	}
 }
-

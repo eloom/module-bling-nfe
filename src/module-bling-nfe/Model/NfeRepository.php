@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace Eloom\BlingNfe\Model;
 
+use Eloom\BlingNfe\Api\Data\NfeInterface;
 use Eloom\BlingNfe\Api\Data\NfeInterfaceFactory;
 use Eloom\BlingNfe\Api\Data\NfeSearchResultsInterfaceFactory;
 use Eloom\BlingNfe\Api\NfeRepositoryInterface;
@@ -96,19 +97,13 @@ class NfeRepository implements NfeRepositoryInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function save(
-		\Eloom\BlingNfe\Api\Data\NfeInterface $nfe
-	) {
+	public function save(NfeInterface $nfe) {
 		/* if (empty($nfe->getStoreId())) {
 				$storeId = $this->storeManager->getStore()->getId();
 				$nfe->setStoreId($storeId);
 		} */
 		
-		$nfeData = $this->extensibleDataObjectConverter->toNestedArray(
-			$nfe,
-			[],
-			\Eloom\BlingNfe\Api\Data\NfeInterface::class
-		);
+		$nfeData = $this->extensibleDataObjectConverter->toNestedArray($nfe, [], NfeInterface::class);
 		
 		$nfeModel = $this->nfeFactory->create()->setData($nfeData);
 		
@@ -139,7 +134,7 @@ class NfeRepository implements NfeRepositoryInterface {
 	public function getList(\Magento\Framework\Api\SearchCriteriaInterface $criteria) {
 		$collection = $this->nfeCollectionFactory->create();
 		
-		$this->extensionAttributesJoinProcessor->process($collection, \Eloom\BlingNfe\Api\Data\NfeInterface::class);
+		$this->extensionAttributesJoinProcessor->process($collection, NfeInterface::class);
 		
 		$this->collectionProcessor->process($criteria, $collection);
 		
@@ -160,9 +155,7 @@ class NfeRepository implements NfeRepositoryInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function delete(
-		\Eloom\BlingNfe\Api\Data\NfeInterface $nfe
-	) {
+	public function delete(NfeInterface $nfe) {
 		try {
 			$nfeModel = $this->nfeFactory->create();
 			$this->resource->load($nfeModel, $nfe->getNfeId());
@@ -181,4 +174,3 @@ class NfeRepository implements NfeRepositoryInterface {
 		return $this->delete($this->get($nfeId));
 	}
 }
-

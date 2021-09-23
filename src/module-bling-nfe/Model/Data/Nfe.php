@@ -15,9 +15,11 @@ declare(strict_types=1);
 
 namespace Eloom\BlingNfe\Model\Data;
 
+use Eloom\BlingNfe\Api\Data\NfeExtensionInterface;
 use Eloom\BlingNfe\Api\Data\NfeInterface;
+use Magento\Framework\Api\AbstractExtensibleObject;
 
-class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements NfeInterface {
+class Nfe extends AbstractExtensibleObject implements NfeInterface {
 	
 	/**
 	 * Get nfe_id
@@ -30,7 +32,7 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	/**
 	 * Set nfe_id
 	 * @param string $nfeId
-	 * @return \Eloom\BlingNfe\Api\Data\NfeInterface
+	 * @return NfeInterface
 	 */
 	public function setNfeId($nfeId) {
 		return $this->setData(self::NFE_ID, $nfeId);
@@ -47,7 +49,7 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	/**
 	 * Set order_id
 	 * @param string $orderId
-	 * @return \Eloom\BlingNfe\Api\Data\NfeInterface
+	 * @return NfeInterface
 	 */
 	public function setOrderId($orderId) {
 		return $this->setData(self::ORDER_ID, $orderId);
@@ -55,7 +57,7 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	
 	/**
 	 * Retrieve existing extension attributes object or create a new one.
-	 * @return \Eloom\BlingNfe\Api\Data\NfeExtensionInterface|null
+	 * @return NfeExtensionInterface|null
 	 */
 	public function getExtensionAttributes() {
 		return $this->_getExtensionAttributes();
@@ -63,12 +65,10 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	
 	/**
 	 * Set an extension attributes object.
-	 * @param \Eloom\BlingNfe\Api\Data\NfeExtensionInterface $extensionAttributes
+	 * @param NfeExtensionInterface $extensionAttributes
 	 * @return $this
 	 */
-	public function setExtensionAttributes(
-		\Eloom\BlingNfe\Api\Data\NfeExtensionInterface $extensionAttributes
-	) {
+	public function setExtensionAttributes(NfeExtensionInterface $extensionAttributes) {
 		return $this->_setExtensionAttributes($extensionAttributes);
 	}
 	
@@ -83,7 +83,7 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	/**
 	 * Set bling_number
 	 * @param string $blingNumber
-	 * @return \Eloom\BlingNfe\Api\Data\NfeInterface
+	 * @return NfeInterface
 	 */
 	public function setBlingNumber($blingNumber) {
 		return $this->setData(self::BLING_NUMBER, $blingNumber);
@@ -100,7 +100,7 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	/**
 	 * Set tracking_number
 	 * @param string $trackingNumber
-	 * @return \Eloom\BlingNfe\Api\Data\NfeInterface
+	 * @return NfeInterface
 	 */
 	public function setTrackingNumber($trackingNumber) {
 		return $this->setData(self::TRACKING_NUMBER, $trackingNumber);
@@ -117,7 +117,7 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	/**
 	 * Set bling_id
 	 * @param string $blingId
-	 * @return \Eloom\BlingNfe\Api\Data\NfeInterface
+	 * @return NfeInterface
 	 */
 	public function setBlingId($blingId) {
 		return $this->setData(self::BLING_ID, $blingId);
@@ -134,7 +134,7 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	/**
 	 * Set access_key
 	 * @param string $accessKey
-	 * @return \Eloom\BlingNfe\Api\Data\NfeInterface
+	 * @return NfeInterface
 	 */
 	public function setAccessKey($accessKey) {
 		return $this->setData(self::ACCESS_KEY, $accessKey);
@@ -151,7 +151,7 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	/**
 	 * Set status
 	 * @param string $status
-	 * @return \Eloom\BlingNfe\Api\Data\NfeInterface
+	 * @return NfeInterface
 	 */
 	public function setStatus($status) {
 		return $this->setData(self::STATUS, $status);
@@ -168,7 +168,7 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	/**
 	 * Set created_at
 	 * @param string $createdAt
-	 * @return \Eloom\BlingNfe\Api\Data\NfeInterface
+	 * @return NfeInterface
 	 */
 	public function setCreatedAt($createdAt) {
 		return $this->setData(self::CREATED_AT, $createdAt);
@@ -185,10 +185,9 @@ class Nfe extends \Magento\Framework\Api\AbstractExtensibleObject implements Nfe
 	/**
 	 * Set danfe_url
 	 * @param string $danfeUrl
-	 * @return \Eloom\BlingNfe\Api\Data\NfeInterface
+	 * @return NfeInterface
 	 */
 	public function setDanfeUrl($danfeUrl) {
 		return $this->setData(self::DANFE_URL, $danfeUrl);
 	}
 }
-

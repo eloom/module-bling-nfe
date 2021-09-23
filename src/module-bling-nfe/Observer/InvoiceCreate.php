@@ -15,8 +15,6 @@ declare(strict_types=1);
 
 namespace Eloom\BlingNfe\Observer;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -42,8 +40,7 @@ class InvoiceCreate implements ObserverInterface {
 	public function __construct(LoggerInterface          $logger,
 	                            OrderRepositoryInterface $orderRepository,
 	                            InvoiceService           $invoiceService,
-	                            InvoiceSender            $invoiceSender,
-	                            Transaction              $transaction) {
+	                            InvoiceSender            $invoiceSender) {
 		
 		$this->logger = $logger;
 		$this->orderRepository = $orderRepository;

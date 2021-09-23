@@ -20,30 +20,32 @@ use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
 use Magento\Framework\Data\Collection\EntityFactoryInterface;
 use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Api\ExtensibleDataInterface;
 
-class Collection extends \Eloom\BlingNfe\Model\ResourceModel\Nfe\Collection
-	implements SearchResultInterface {
+class Collection extends \Eloom\BlingNfe\Model\ResourceModel\Nfe\Collection implements SearchResultInterface {
 	
 	/**
 	 * @var AggregationInterface
 	 */
 	protected $aggregations;
 	
-	public function __construct(
-		\Magento\Framework\Data\Collection\EntityFactoryInterface    $entityFactory,
-		\Psr\Log\LoggerInterface                                     $logger,
-		\Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
-		\Magento\Framework\Event\ManagerInterface                    $eventManager,
-		\Magento\Store\Model\StoreManagerInterface                   $storeManager,
-		                                                             $mainTable,
-		                                                             $eventPrefix,
-		                                                             $eventObject,
-		                                                             $resourceModel,
-		                                                             $model = 'Magento\Framework\View\Element\UiComponent\DataProvider\Document',
-		                                                             $connection = null,
-		\Magento\Framework\Model\ResourceModel\Db\AbstractDb         $resource = null
-	) {
+	public function __construct(EntityFactoryInterface $entityFactory,
+	                            LoggerInterface        $logger,
+	                            FetchStrategyInterface $fetchStrategy,
+	                            ManagerInterface       $eventManager,
+	                            StoreManagerInterface  $storeManager,
+	                                                   $mainTable,
+	                                                   $eventPrefix,
+	                                                   $eventObject,
+	                                                   $resourceModel,
+	                                                   $model = 'Magento\Framework\View\Element\UiComponent\DataProvider\Document',
+	                                                   $connection = null,
+	                            AbstractDb             $resource = null) {
+		
 		parent::__construct(
 			$entityFactory,
 			$logger,
@@ -87,7 +89,7 @@ class Collection extends \Eloom\BlingNfe\Model\ResourceModel\Nfe\Collection
 	/**
 	 * Get search criteria.
 	 *
-	 * @return \Magento\Framework\Api\SearchCriteriaInterface|null
+	 * @return SearchCriteriaInterface|null
 	 */
 	public function getSearchCriteria() {
 		return null;
@@ -96,11 +98,11 @@ class Collection extends \Eloom\BlingNfe\Model\ResourceModel\Nfe\Collection
 	/**
 	 * Set search criteria.
 	 *
-	 * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+	 * @param SearchCriteriaInterface $searchCriteria
 	 * @return $this
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
-	public function setSearchCriteria(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria = null) {
+	public function setSearchCriteria(SearchCriteriaInterface $searchCriteria = null) {
 		return $this;
 	}
 	
@@ -127,7 +129,7 @@ class Collection extends \Eloom\BlingNfe\Model\ResourceModel\Nfe\Collection
 	/**
 	 * Set items list.
 	 *
-	 * @param \Magento\Framework\Api\ExtensibleDataInterface[] $items
+	 * @param ExtensibleDataInterface[] $items
 	 * @return $this
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */

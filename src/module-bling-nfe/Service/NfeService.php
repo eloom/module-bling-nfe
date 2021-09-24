@@ -31,13 +31,11 @@ class NfeService {
 	
 	private $order;
 	
-	public function __construct() {
-		$this->dom = new \DOMDocument('1.0', 'UTF-8');
-		$this->dom->xmlStandalone = true;
-	}
-	
 	public function toXml(Order $order) {
 		$this->order = $order;
+		
+		$this->dom = new \DOMDocument('1.0', 'UTF-8');
+		$this->dom->xmlStandalone = true;
 		
 		$nfeNode = $this->dom->appendChild($this->dom->createElement('pedido'));
 		$nfeNode->appendChild($this->dom->createElement('numero', $this->order->getId()));

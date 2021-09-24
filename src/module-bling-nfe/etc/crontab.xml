@@ -9,7 +9,7 @@
 		</job>
 		
 		<job name="eloom_blingnfe_syncronize_ship"
-		     instance="Eloom\BlingNfe\Cron\SyncronizeShip"
+		     instance="Eloom\BlingNfe\Cron\ShipSyncronize"
 		     method="execute">
 			<schedule>10 */3 * * *</schedule>
 		</job>

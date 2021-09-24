@@ -30,7 +30,7 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\OrderRepository;
 use Psr\Log\LoggerInterface;
 
-class SyncronizeShip {
+class ShipSyncronize {
 	
 	private $nfeRepository;
 	

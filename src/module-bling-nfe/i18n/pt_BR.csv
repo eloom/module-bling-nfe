@@ -33,6 +33,7 @@
 # -- N
 "Nature of operation","Natureza da operação"
 "NF-e number","Número da NF-e"
+"NF-e Access Key","Chave de acesso da NF-e"
 "NF-e Serie","Série da NF-e"
 "NF-e series cannot be null.","Série da NF-e não pode ser nula."
 "NF-e A/R Generate","Gerar NF-e"

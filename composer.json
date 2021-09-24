@@ -1,6 +1,6 @@
 {
   "name": "eloom/module-bling-nfe",
-  "description": "Bling NFe para Magento 2",
+  "description": "Bling NF-e para Magento",
   "homepage": "https://eloom.tech/bling",
   "keywords": [
     "magento",
@@ -24,7 +24,7 @@
   "require": {
     "php": "~7.3|~7.4",
     "magento/framework": "103.0.*",
-    "eloom/module-bling": "dev-main"
+    "eloom/module-bling": "1.0.*"
   },
   "license": [
     "OSL-3.0",

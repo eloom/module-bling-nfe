@@ -26,5 +26,6 @@ Consulte a seção [Instalando o módulo](https://docs.eloom.tech/pt/bling#insta
 * [Web site](https://eloom.tech/bling)
 * [Documentação](https://docs.eloom.tech/bling)
 * [Issue tracker](https://github.com/eloom/module-bling-nfe/issues)
-* [Composer](https://app.repman.io/organization/eloom/package/81520e5c-adab-4769-8430-f6fb167e41bd/details)
+* [Packagist](https://packagist.org/packages/eloom/module-bling-nfe)
+* [Repman](https://app.repman.io/organization/eloom/package/35ecde1c-afd8-4d72-a382-8184496d691e/details)
 * [Código fonte](https://github.com/eloom/module-bling-nfe)

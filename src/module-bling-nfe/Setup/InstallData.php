@@ -51,7 +51,7 @@ class InstallData implements InstallDataInterface {
 				'visible_on_front' => false,
 				'used_in_product_listing' => false,
 				'unique' => false,
-				'apply_to' => 'simple,bundle,grouped,configurable',
+				'apply_to' => 'simple,bundle,grouped,configurable,downloadable',
 				'sort_order' => 1
 			]);
 		}
@@ -72,7 +72,7 @@ class InstallData implements InstallDataInterface {
 				'visible_on_front' => false,
 				'used_in_product_listing' => false,
 				'unique' => false,
-				'apply_to' => 'simple,bundle,grouped,configurable',
+				'apply_to' => 'simple,bundle,grouped,configurable,downloadable',
 				'sort_order' => 2,
 				'option' => array(
 					'values' => array(
@@ -100,7 +100,7 @@ class InstallData implements InstallDataInterface {
 				'visible_on_front' => false,
 				'used_in_product_listing' => false,
 				'unique' => false,
-				'apply_to' => 'simple,bundle,grouped,configurable',
+				'apply_to' => 'simple,bundle,grouped,configurable,downloadable',
 				'sort_order' => 3,
 				'option' => array(
 					'values' => array(
@@ -128,7 +128,7 @@ class InstallData implements InstallDataInterface {
 				'visible_on_front' => false,
 				'used_in_product_listing' => false,
 				'unique' => false,
-				'apply_to' => 'simple,bundle,grouped,configurable',
+				'apply_to' => 'simple,bundle,grouped,configurable,downloadable',
 				'sort_order' => 4,
 				'option' => array(
 					'values' =>
@@ -163,7 +163,7 @@ class InstallData implements InstallDataInterface {
 				'visible_on_front' => false,
 				'used_in_product_listing' => false,
 				'unique' => false,
-				'apply_to' => 'simple,bundle,grouped,configurable',
+				'apply_to' => 'simple,bundle,grouped,configurable,downloadable',
 				'sort_order' => 5
 			]);
 		}
@@ -184,7 +184,7 @@ class InstallData implements InstallDataInterface {
 				'visible_on_front' => false,
 				'used_in_product_listing' => false,
 				'unique' => false,
-				'apply_to' => 'simple,bundle,grouped,configurable',
+				'apply_to' => 'simple,bundle,grouped,configurable,downloadable',
 				'sort_order' => 6
 			]);
 		}

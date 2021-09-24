@@ -84,10 +84,11 @@ class MassGenerate extends Action {
 			return $this->_redirect('sales/order/index');
 		}
 		
-		$orderCollection = $this->collectionFactory->create();
-		$orderCollection->addFieldToFilter('entity_id', ['in' => $orderIds]);
+		$collection = $this->collectionFactory->create();
+		$collection->addFieldToFilter('entity_id', ['in' => $orderIds]);
+		$collection->getSelect()->limit(10);
 		
-		foreach ($orderCollection as $order) {
+		foreach ($collection as $order) {
 			try {
 				if (!$this->helper->isActiveAR($order->getStoreId())) {
 					throw new \Exception("Please enable NF-e / AR generation.");

@@ -20,9 +20,9 @@
     "email": "suporte@eloom.com.br"
   },
   "minimum-stability": "dev",
-  "prefer-stable" : true,
+  "prefer-stable": true,
   "require": {
-    "php": "~7.3|~7.4",
+    "php": "~8.4",
     "magento/framework": "103.0.*",
     "eloom/module-bling": "dev-main"
   },
